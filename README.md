@@ -1,16 +1,8 @@
 # todo_app
 
-A new Flutter project.
+FlutterTodo is a sleek task manager app crafted with Flutter and powered by Hive database. Manage tasks effortlessly with intuitive controls and offline support. Stay organized with customizable categories and priority levels. Available on both Android and iOS platforms for seamless task management on the go.
 
-## Getting Started
+## Screenshot
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![910shots_so](https://github.com/dev-rahul-0/todo_app/assets/114253454/71af3ea8-f886-4abf-bd00-6f084a11bef8)
