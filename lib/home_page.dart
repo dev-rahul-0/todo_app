@@ -21,7 +21,10 @@ class _HomePageState extends State<HomePage> {
     _myBoxFuture = Hive.openBox('mybox');
     _myBoxFuture.then((myBox) {
       if (myBox.get("TODOLIST") == null) {
-        db.createInitiaData();
+          setState(() {
+              db.createInitiaData();
+              db.loadData();
+          });
       } else {
         db.loadData();
       }

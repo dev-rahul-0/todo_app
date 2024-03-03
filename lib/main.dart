@@ -5,8 +5,8 @@ import 'package:hive_flutter/adapters.dart';
 import 'home_page.dart';
 
 void main() async{
-  await Hive.initFlutter;
-  var box = await Hive.openBox('mybox');
+  await Hive.initFlutter();
+    await Hive.openBox('mybox');
   runApp(const MyApp());
 }
 
