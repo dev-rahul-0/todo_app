@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_app/database.dart';
 import 'package:todo_app/dialog_box.dart';
 import 'package:todo_app/todotile.dart';
@@ -13,24 +14,26 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   // final _mybox = Hive.openBox('mybox');
-  late Future<Box> _myBoxFuture;
+  // late Future<Box> _myBoxFuture;
   ToDoDataBase db = ToDoDataBase();
 
   @override
   void initState() {
-    _myBoxFuture = Hive.openBox('mybox');
-    _myBoxFuture.then((myBox) {
-      if (myBox.get("TODOLIST") == null) {
-          setState(() {
-              db.createInitiaData();
-              db.loadData();
-          });
-      } else {
-        db.loadData();
-      }
-    });
+    _initializeData();
 
     super.initState();
+  }
+
+  Future<void> _initializeData() async {
+    await Hive.initFlutter();
+    final myBox = await Hive.openBox('mybox');
+
+    if (myBox.get("TODOLIST") == null) {
+      db.createInitiaData();
+    } else {
+      db.loadData();
+    }
+    setState(() {});
   }
 
   final _controller = TextEditingController();
@@ -74,12 +77,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.yellow[200],
       appBar: AppBar(
+        backgroundColor: Colors.yellow.shade700,
         title: const Text('TO DO'),
         elevation: 0,
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.yellow.shade700,
         onPressed: createNewTask,
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add,color: Colors.black,),
       ),
       body: ListView.builder(
         itemCount: db.toDoList.length,
